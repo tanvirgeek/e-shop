@@ -38,20 +38,23 @@ const Footer = () => {
             <p>We sell all type of gadgets</p>
             <p>&copy; {new Date().getFullYear()} E-Shop. All rights reserved</p>
           </Footerlist>
-          <div className="flex gap-2">
-            <Link href="#">
-              <AiFillFacebook size={24} />
-            </Link>
-            <Link href="#">
-              <AiFillTwitterCircle size={24} />
-            </Link>
-            <Link href="#">
-              <AiFillInstagram size={24} />
-            </Link>
-            <Link href="#">
-              <AiFillYoutube size={24} />
-            </Link>
-          </div>
+          <Footerlist>
+            <h3 className="text-base font-bold mb-2">Follow us</h3>
+            <div className="flex gap-2">
+              <Link href="#">
+                <AiFillFacebook size={24} />
+              </Link>
+              <Link href="#">
+                <AiFillTwitterCircle size={24} />
+              </Link>
+              <Link href="#">
+                <AiFillInstagram size={24} />
+              </Link>
+              <Link href="#">
+                <AiFillYoutube size={24} />
+              </Link>
+            </div>
+          </Footerlist>
         </div>
       </Container>
     </footer>
