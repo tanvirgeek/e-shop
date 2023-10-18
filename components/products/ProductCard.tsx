@@ -1,6 +1,8 @@
 "use client";
 
+import { formatPrice } from "@/utils/formatPrice";
 import { trancateText } from "@/utils/trancateText";
+import { Rating } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
@@ -9,8 +11,11 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  const productRating =
+    data.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
+    data.reviews.length;
   return (
-    <div className=" col-span-1 cursor-pointer border-[1.2px] border-slate-200 rounded-sm p-2 transition-all hover:scale-150 text-center text-sm">
+    <div className=" col-span-1 cursor-pointer border-[1.2px] border-slate-200 rounded-sm p-2 transition-all hover:scale-110 text-center text-sm">
       <div
         className="
       flex
@@ -28,9 +33,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           />
         </div>
         <div className="mt-4">{trancateText(data.name)}</div>
-        <div>Rating</div>
+        <div>
+          <Rating value={productRating} readOnly />
+        </div>
         <div>{data.reviews.length} reviews</div>
-        <div></div>
+        <div className="font-semibold">{formatPrice(data.price)}</div>
       </div>
     </div>
   );
