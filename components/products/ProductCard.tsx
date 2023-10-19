@@ -4,6 +4,7 @@ import { formatPrice } from "@/utils/formatPrice";
 import { trancateText } from "@/utils/trancateText";
 import { Rating } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ProductCardProps {
@@ -11,11 +12,15 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  const router = useRouter();
   const productRating =
     data.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
     data.reviews.length;
   return (
-    <div className=" col-span-1 cursor-pointer border-[1.2px] border-slate-200 rounded-sm p-2 transition-all hover:scale-110 text-center text-sm">
+    <div
+      className=" col-span-1 cursor-pointer border-[1.2px] border-slate-200 rounded-sm p-2 transition-all hover:scale-110 text-center text-sm"
+      onClick={() => router.push(`/product/${data.id}`)}
+    >
       <div
         className="
       flex
